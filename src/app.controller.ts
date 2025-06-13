@@ -9,4 +9,9 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('/current-time')
+  getCurrentTime(): string {
+    return this.appService.getCurrentTime();
+  }
 }
