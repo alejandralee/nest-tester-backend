@@ -9,11 +9,7 @@ export const AppDataSource = new DataSource(
   isProd
     ? {
         type: 'postgres',
-        host: process.env.DATASOURCE_HOST || 'localhost',
-        port: 5432,
-        username: process.env.DATASOURCE_USERNAME || '',
-        password: process.env.DATASOURCE_PASSWORD || '',
-        database: process.env.DATASOURCE_DB || 'nest-tester-db',
+        url: process.env.DATABASE_URL || '',
         ssl: { rejectUnauthorized: false }, // Supabase requires SSL
         synchronize: false, // use migrations in production
         logging: false,
@@ -23,11 +19,9 @@ export const AppDataSource = new DataSource(
       }
     : {
         type: 'postgres',
-        host: process.env.DATASOURCE_HOST || 'localhost',
-        port: 5432,
-        username: process.env.DATASOURCE_USERNAME || '',
-        password: process.env.DATASOURCE_PASSWORD || '',
-        database: process.env.DATASOURCE_DB || 'nest-tester-db',
+        url:
+          process.env.DATABASE_URL ||
+          'postgresql://postgres@localhost:5432/nest-tester-db',
         synchronize: true,
         logging: false,
         entities: [User],
