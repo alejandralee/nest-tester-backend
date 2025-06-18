@@ -1,9 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { AppDataSource } from './data-source';
+import 'dotenv/config';
 
 async function bootstrap() {
   // test typeorm
+  console.log('DB host:', process.env.DATASOURCE_HOST);
   AppDataSource.initialize().catch((error) => console.log(error));
   // add cors support
   const corsOptions = {
