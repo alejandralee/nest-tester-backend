@@ -1,7 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { AppDataSource } from './data-source';
 
 async function bootstrap() {
+  // test typeorm
+  AppDataSource.initialize().catch((error) => console.log(error));
   // add cors support
   const corsOptions = {
     origin: '*', // allow all origins
