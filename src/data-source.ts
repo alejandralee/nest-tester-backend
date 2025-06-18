@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource(
     ? {
         type: 'postgres',
         url: process.env.DATABASE_URL || '',
-        ssl: { rejectUnauthorized: false }, // Supabase requires SSL
+        ssl: true, // use SSL in production
         synchronize: false, // use migrations in production
         logging: false,
         entities: [User],
